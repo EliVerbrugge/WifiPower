@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- CSS  -->
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139128802-1"></script>
     <script>
@@ -11,26 +15,26 @@
       gtag('config', 'UA-139128802-1');
     </script>
 
-    <meta charset="utf-8">
-    <title>Wifi Power | What AirPower wanted to be</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="cleartype" content="on">
-    <meta name="HandheldFriendly" content="True">
-    <link rel="stylesheet" href="src/styles.css">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-7422791457858994",
-    enable_page_level_ads: true
-    });
+      <meta charset="utf-8">
+      <title>Wifi Power | What AirPower wanted to be</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      <meta http-equiv="cleartype" content="on">
+      <meta name="HandheldFriendly" content="True">
+      <link rel="stylesheet" href="src/styles.css">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-7422791457858994",
+      enable_page_level_ads: true
+      });
     </script>
   </head>
   <body>
 
     <header class="demo-header">
-      <h1 class="demo-title">Wifi Power</h1>
-      <p class="not-support" hidden>Your browser doesn't support charging, shame! Maybe try better next time!</p>
+      <h1 class="demo-title">Charging Page</h1>
+      <p class="not-support" hidden>Your browser doesn't support charging, shame!</p>
     </header>
 
     <article class="battery-card">
@@ -76,64 +80,71 @@
     <div id="myBar"></div>
     </div>
     <div style="text-align: center;">
-    <input type="button" id="toggler" style="text-align:center;" value="Find nearest charger" onClick="move();" />    
+    <input type="button" id="toggler" class="waves-effect waves-light btn black" style="text-align:center;" value="Find nearest charger" onClick="move();" />    
 
     </div>
     <p style="text-align:center;"></p>
 
     <p id="demo"></p>
 
-     <script src="src/index.js" async></script>
+    <script src="src/index.js" async></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
       var elem = document.getElementById("myBar");   
       elem.style.display = 'none';
-    function move() {
-          elem.style.display = 'block';
-      var width = 0;
-      var id = setInterval(frame, 60);
-      function frame() {
-        if (width >= 100) {
+      function move() {
+        elem.style.display = 'block';
+        var width = 0;
+        var id = setInterval(frame, 60);
+        function frame() {
+        if (width >= 100) 
+          {
           clearInterval(id);
-        } else {
+          } 
+        else 
+          {
           width++; 
           elem.style.width = width + '%'; 
           elem.innerHTML = 'Finding Location';
+          }
         }
+        document.getElementById('toggler').style.display = 'none';
+        getLocation();
       }
-      document.getElementById('toggler').style.display = 'none';
-      getLocation();
-    }
-    function getLocation()
-    {
-     var x = document.getElementById("demo");
-            var platform = new H.service.Platform({
-                "app_id": "zgNDBRB10RjbxUT6NeOw",
-                "app_code": "BLl_l4x63LFbPLNL7CtvpA",
-                useHTTPS: true
-            });
-            var geocoder = platform.getGeocodingService();
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    geocoder.reverseGeocode(
-                        {
-                            mode: "retrieveAddresses",
-                            maxresults: 1,
-                            prox: position.coords.latitude + "," + position.coords.longitude
-                        }, data => {
-                            x.innerHTML = "<center><p>"+"The nearest wifi charging point to your location is:\n" + data.Response.View[0].Result[0].Location.Address.Label;
-                            document.getElementById("myBar").style.display = "none";
 
-                        }, error => {
-                            console.error(error);
-                        }
-                    );
-                });
-            } else {
-                console.error("Geolocation is not supported by this browser!");
+      function getLocation()
+        {
+        var x = document.getElementById("demo");
+        var platform = new H.service.Platform({
+        "app_id": "zgNDBRB10RjbxUT6NeOw",
+        "app_code": "BLl_l4x63LFbPLNL7CtvpA",
+        useHTTPS: true
+        });
+        var geocoder = platform.getGeocodingService();
+        if(navigator.geolocation) 
+          {
+          navigator.geolocation.getCurrentPosition(position => {
+          geocoder.reverseGeocode(
+          {
+            mode: "retrieveAddresses",
+            maxresults: 1,
+            prox: position.coords.latitude + "," + position.coords.longitude
+            }, data => {
+            x.innerHTML = "<center><p>"+"The nearest wifi charging point to your location is:\n" + data.Response.View[0].Result[0].Location.Address.Label;
+            document.getElementById("myBar").style.display = "none";
+
+            }, error => {
+              console.error(error);
             }
+            );
+           });
+          } 
+        else 
+           {
+            console.error("Geolocation is not supported by this browser!");
+           }
         }
-        </script>
+    </script>
   </body>
 </html>
