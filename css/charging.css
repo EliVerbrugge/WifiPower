@@ -120,31 +120,6 @@ footer {
   text-decoration: none;
 }
 
-#github-button {
-  display: block;
-  margin: 30px auto 0;
-  position: relative;
-  left: 40px;
-}
-
-#github-ribbon {
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 100;
-  border: 0;
-  width: 149px;
-  height: 149px;
-}
-
-.github-buttons {
-  text-align: center;
-  margin: 1em 0;
-}
-
-
-
 /**
  * Medium Screens
  */

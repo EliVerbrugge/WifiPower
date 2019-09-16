@@ -30,26 +30,35 @@
 	  .parallax-container {
       height: 700;
 		}
+		.brand-img img {
+    padding-left: 5px; /* Fix a little issue of the logo "sticking" to the left side of the screen too much */
+    height: 100%;
+		position:relative; 
+		}
 	</style>
 	<body>
 		 <nav class="white" role="navigation">
 			<div class="nav-wrapper container">
-                <a href="#!" class="brand-logo">WifiPower</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">About</a></li>
-                </ul>
-                <ul id="nav-mobile" class="sidenav">
-                    <li><a href="#">About</a></li>
-                </ul>
+					<a href="#" class="brand-img img-responsive">
+							<img src="WifiPower.jpg">
+					</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="about.html">About Us</a></li>
+      		</ul>
 			</div>
 		  </nav>
+
+			<ul class="sidenav" id="mobile-demo">
+    		<li><a href="about.html">About Us</a></li>
+  		</ul>
 
 		  <div id="index-banner" class="parallax-container">
 			<div class="section">
 			  <div class="container">
 				<br><br>
 				<div class="row center s12">
-				<h1 class="header center black-text text-accent-2">WifiPower</h1>
+				<h1 class="header center black-text text-accent-2">Wireless Charging for All</h1>
                 </div>
                 <div class="row center s12">
 				  <h5 class="header col s12 black-text">A new technology that employs wireless charging standards to charge your phone.</h5>
@@ -116,16 +125,11 @@
 			  <div class="row">
 				<div class="col l6 s12">
 				  <h5 class="white-text">Company Bio</h5>
-				  <p class="grey-text text-lighten-4">We are a experienced team of developers from a variety of programming and electrical engineering backgrounds working together to build the next-generation charging solution to empower users globally.</p>
+				  <p class="grey-text text-lighten-4">We are an experienced team of developers from a variety of programming and computer engineering backgrounds working together to build the next-generation charging solution to empower users globally.</p>
 
 
 				</div>
 			
-			  </div>
-			</div>
-			<div class="footer-copyright">
-			  <div class="container">
-			  Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
 			  </div>
 			</div>
 		  </footer>

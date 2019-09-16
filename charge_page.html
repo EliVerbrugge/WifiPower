@@ -1,12 +1,18 @@
 <!doctype html>
 <html lang="en">
+    <header>
+        <title>Wifi Power | What AirPower wanted to be</title>
+        <h1 align="center">Charging Page</h1>
+</header>
   <head>
     <!-- CSS  -->
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139128802-1"></script>
+    <script type="text/javascript" src="js/loading-bar.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -16,7 +22,6 @@
     </script>
 
       <meta charset="utf-8">
-      <title>Wifi Power | What AirPower wanted to be</title>
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
       <meta http-equiv="cleartype" content="on">
@@ -32,34 +37,24 @@
   </head>
   <body>
 
-    <header class="demo-header">
-      <h1 class="demo-title">Charging Page</h1>
-      <p class="not-support" hidden>Your browser doesn't support charging, shame!</p>
-    </header>
 
-    <article class="battery-card">
-      <h1 class="battery-title">Battery Status</h1>
-
-      <div class="battery-box">
-        <strong class="battery-percentage"></strong>
-        <i class="battery"></i>
-      </div>
-
-      <dl class="battery-info">
-        <dt>Power Source</dt>
-        <dd class="battery-status">---</dd>
-
-        <dt>Level percentage</dt>
-        <dd class="battery-level">---</dd>
-
-        <dt>Fully charged in</dt>
-        <dd class="battery-fully">---</dd>
-
-        <dt>Remaining time</dt>
-        <dd class="battery-remaining">---</dd>
-      </dl>
-
-    </article>
+    <style type="text/css">
+        .ldBar-label {
+          color: red;
+          font-family: tahoma;
+          font-size: 2.1em;
+          font-weight: 900
+        }
+    </style>
+    
+    <div
+      class="ldBar label-center"
+      style="width:30%;height:30%;margin:auto"
+      data-type="fill"
+      data-value="0"
+      data-img="battery.svg"
+    
+    ></div>
 
     <style>
     #myProgress {
@@ -86,11 +81,44 @@
     <p style="text-align:center;"></p>
 
     <p id="demo"></p>
-
-    <script src="src/index.js" async></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript">
+    <script async type="text/javascript">
+      var percentage = "";
+      var i;
+      var interval;
+
+      var b1 = document.querySelector(".ldBar");
+      var b = new ldBar(b1);
+
+      if ('getBattery' in navigator) {
+        alert("getting battery");
+        readBattery(battery);
+      } 
+      else if (navigator.battery) {
+        readBattery(navigator.battery);
+      }
+      else
+      {
+        alert("Browser not supported");
+      }
+      
+      function readBattery(battery) {
+        alert("reading battery");
+        alert(battery.level);
+        i = (battery.level * 100);
+        alert("setting battery");
+        b.set(i, false);
+        interval = setInterval( increment, 5000);
+      }
+
+      function increment(){
+        if(i < 100){
+          i = i + 1;
+        }
+        b.set(i, false);
+      }
+
       var elem = document.getElementById("myBar");   
       elem.style.display = 'none';
       function move() {
