@@ -91,12 +91,11 @@
       var b1 = document.querySelector(".ldBar");
       var b = new ldBar(b1);
 
-      if ('getBattery' in navigator) {
-        alert("getting battery");
-        readBattery(battery);
+      if (navigator.battery) {
+      readBattery(navigator.battery);
       } 
-      else if (navigator.battery) {
-        readBattery(navigator.battery);
+      else if (navigator.getBattery) {
+      navigator.getBattery().then(readBattery);
       }
       else
       {
@@ -104,10 +103,7 @@
       }
       
       function readBattery(battery) {
-        alert("reading battery");
-        alert(battery.level);
         i = (battery.level * 100);
-        alert("setting battery");
         b.set(i, false);
         interval = setInterval( increment, 5000);
       }
