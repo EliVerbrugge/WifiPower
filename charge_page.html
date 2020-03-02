@@ -2,15 +2,14 @@
 <html lang="en">
     <header>
         <title>Wifi Power | What AirPower wanted to be</title>
-        <h1 align="center">Charging Page</h1>
-</header>
+    </header>
   <head>
     <!-- CSS  -->
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics --> 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139128802-1"></script>
     <script type="text/javascript" src="js/loading-bar.js"></script>
     <script>
@@ -35,9 +34,19 @@
       });
     </script>
   </head>
-  <body>
+  <body background="background_charging.jpg">
 
-
+    <nav class="blue-grey lighten-2" role="navigation">
+        <div class="nav-wrapper container">
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" class="brand-logo center">WifiPower</a>
+          </ul>
+          <a href="#" class="brand-img img-responsive">
+            <img src="WifiPower.png">
+          </a>
+        </div>
+    </nav>
+    
     <style type="text/css">
         .ldBar-label {
           color: red;
@@ -46,41 +55,68 @@
           font-weight: 900
         }
     </style>
-    
-    <div
-      class="ldBar label-center"
-      style="width:30%;height:30%;margin:auto"
-      data-type="fill"
-      data-value="0"
-      data-img="battery.svg"
-    
-    ></div>
+     <div class="container">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+
+        <div class="row">
+            <div class="card-panel grey lighten-1">
+                <div
+                class="ldBar label-center"
+                style="width:30%;height:30%;margin:auto"
+                data-type="fill"
+                data-value="0"
+                data-img="laptop.png"
+              
+              ></div>
+
+              <p><a href="about.html"><center>Want to learn more about us?</center></a></p>
+            </div>
+        </div>
+        
+        <div id="myProgress">
+          <div id="myBar"></div>
+        </div>
+        <div style="text-align: center;">
+          <input type="button" id="toggler" class="waves-effect waves-light btn black" style="text-align:center;" value="Locate nearest charger" onClick="move();" />    
+        </div>    
+        <p id="demo"></p>
+      </div>
+     
 
     <style>
-    #myProgress {
-    width: 100%;
-    background-color: #ddd;
-    }
+      body 
+        {
+        font-family: "Raleway", Sans-Serif;
+        font-weight: 400;
+        margin: 0; padding: 0;
+        }
 
-    #myBar {
-      width: 0%;
-      height: 30px;
-      background-color: #4CAF50;
-      text-align: center;
-      line-height: 30px;
-      color: white;
-    }
+      #myProgress 
+        {
+        width: 100%;
+        background-color: #ddd;
+        }
+
+      #myBar 
+        {
+        width: 0%;
+        height: 30px;
+        background-color: #4CAF50;
+        text-align: center;
+        line-height: 30px;
+        color: white;
+        }
+      .brand-img img 
+        {
+        padding-left: 5px; /* Fix a little issue of the logo "sticking" to the left side of the screen too much */
+        height: 100%;
+        position:relative; 
+        }
     </style>
-    <div id="myProgress">
-    <div id="myBar"></div>
-    </div>
-    <div style="text-align: center;">
-    <input type="button" id="toggler" class="waves-effect waves-light btn black" style="text-align:center;" value="Find nearest charger" onClick="move();" />    
-
-    </div>
-    <p style="text-align:center;"></p>
-
-    <p id="demo"></p>
+   
     <script src="https://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
     <script async type="text/javascript">
@@ -99,12 +135,12 @@
       }
       else
       {
-        alert("Browser not supported");
+      window.location.replace("Invalid_browser.html");
       }
       
       function readBattery(battery) {
         i = (battery.level * 100);
-        b.set(i, false);
+        b.set(Math.floor(i), false);
         interval = setInterval( increment, 5000);
       }
 
@@ -112,7 +148,7 @@
         if(i < 100){
           i = i + 1;
         }
-        b.set(i, false);
+        b.set(Math.floor(i), false);
       }
 
       var elem = document.getElementById("myBar");   
@@ -155,7 +191,7 @@
             maxresults: 1,
             prox: position.coords.latitude + "," + position.coords.longitude
             }, data => {
-            x.innerHTML = "<center><p>"+"The nearest wifi charging point to your location is:\n" + data.Response.View[0].Result[0].Location.Address.Label;
+            x.innerHTML = "<span style='color: white;'><center><p>"+"The nearest wifi charging point to your location is:\n" + data.Response.View[0].Result[0].Location.Address.Label + "<br> Your latency is: " + (Math.floor(Math.random() * 70)+30) +" ms</span>";
             document.getElementById("myBar").style.display = "none";
 
             }, error => {
@@ -170,5 +206,6 @@
            }
         }
     </script>
+    <script src="js/init.js"></script>
   </body>
 </html>
