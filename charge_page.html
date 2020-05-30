@@ -1,8 +1,5 @@
 <!doctype html>
 <html lang="en">
-    <header>
-        <title>Wifi Power | What AirPower wanted to be</title>
-    </header>
   <head>
     <!-- CSS  -->
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,28 +31,34 @@
       });
     </script>
   </head>
-  <body background="background_charging.jpg">
+  
+  <header>
+    <title>Wifi Power | What AirPower wanted to be</title>
+  </header>
 
-    <nav class="blue-grey lighten-2" role="navigation">
+  <body background="images/background_charging.jpg">
+
+  <nav class="blue-grey lighten-2" role="navigation">
         <div class="nav-wrapper container">
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <a href="#" class="brand-logo center">WifiPower</a>
           </ul>
           <a href="#" class="brand-img img-responsive">
-            <img src="WifiPower.png">
+            <img src="images/WifiPower.png">
           </a>
         </div>
-    </nav>
+  </nav>
     
-    <style type="text/css">
+  <style type="text/css">
         .ldBar-label {
           color: red;
           font-family: tahoma;
           font-size: 2.1em;
           font-weight: 900
         }
-    </style>
-     <div class="container">
+  </style>
+
+  <div class="container">
         <div class="row"></div>
         <div class="row"></div>
         <div class="row"></div>
@@ -68,8 +71,7 @@
                 style="width:30%;height:30%;margin:auto"
                 data-type="fill"
                 data-value="0"
-                data-img="laptop.png"
-              
+                data-img="images/laptop.png"
               ></div>
 
               <p><a href="about.html"><center>Want to learn more about us?</center></a></p>
@@ -83,10 +85,10 @@
           <input type="button" id="toggler" class="waves-effect waves-light btn black" style="text-align:center;" value="Locate nearest charger" onClick="move();" />    
         </div>    
         <p id="demo"></p>
-      </div>
+  </div>
      
 
-    <style>
+  <style>
       body 
         {
         font-family: "Raleway", Sans-Serif;
@@ -125,6 +127,12 @@
       var interval;
 
       var b1 = document.querySelector(".ldBar");
+
+      if (window.navigator.userAgent.indexOf("Android")!= -1) b1.setAttribute("data-img", "images/smartphone.png");
+      if (window.navigator.userAgent.indexOf("iPhone")!= -1) b1.setAttribute("data-img", "images/smartphone.png");
+      if (window.navigator.userAgent.indexOf("iPad")!= -1) b1.setAttribute("data-img", "images/smartphone.png");
+      if (window.navigator.userAgent.indexOf("iPod")!= -1) b1.setAttribute("data-img", "images/smartphone.png");
+
       var b = new ldBar(b1);
 
       if (navigator.battery) {
@@ -153,6 +161,7 @@
 
       var elem = document.getElementById("myBar");   
       elem.style.display = 'none';
+
       function move() {
         elem.style.display = 'block';
         var width = 0;
