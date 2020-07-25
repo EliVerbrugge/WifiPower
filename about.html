@@ -1,67 +1,73 @@
+<html>
 <head>
     <!-- CSS  -->
       <title>Wifi Power | What AirPower wanted to be</title>
       <link rel="icon" href="images/icon.png">
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <link rel="stylesheet" type="text/css" href="css/loading-bar.css"/>
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139128802-1"></script>
 </head>
 
-<body>
-    <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" rel="stylesheet" />
 
-<style type="text/css">
-    html, body {
-        height: 100%;
-    }
+<style>
 
-    .pin-top {
-        position: relative;
-    }
-
-    .pin-bottom {
-        position: relative;
-    }
-
-    .pinned {
-        position: fixed !important;
-    }
-    
-    .block {
-        height: 100%;
-    }
-    
-    .divider {
-        height: 50px;
+    .carousel
+    {
+        min-height:100vh !important;
+        padding-bottom: 10% 
     }
 
     .brand-img img 
 			{
-			padding-left: 100px; /* Fix a little issue of the logo "sticking" to the left side of the screen too much */
+			padding-left: 5px; /* Fix a little issue of the logo "sticking" to the left side of the screen too much */
 			height: 100%;
 			position:relative; 
-			}
-  </style>
-   <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper blue-grey lighten-2">
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <a href="main.html" class="brand-logo center">WifiPower</a>
-          </ul>
-          <a href="#" class="brand-img img-responsive">
-            <img src="images/WifiPower.png">
-          </a>  
-      </div>
-    </nav>
-   </div>
+            }
+</style>
 
-  <div id="blue" class="block grey lighten-2">    
-    <div class="row"><div class="col l12 m12 s12"><h1 class="center">Our Technology</h1></div></div>
+<script>
+    $(document).ready(function () {
+        $('.carousel').carousel();
+        $('.carousel.carousel-slider').carousel({ fullWidth: true });
+        $('.slide-prev').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.carousel').carousel('prev')
+        });
+        $('.slide-next').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $('.carousel').carousel('next')
+        });
+        //this is for navigation using a new tab
+        $('.share-btn').click(function (e) {
+            var win = window.open('http://google.com', '_blank');
+            win.focus();
+        });
+    });
+</script>
+
+<body>
+    <div id="Header" class="navbar-fixed">
+        <nav>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons icon-black">menu</i></a>
+        <div class="nav-wrapper blue-grey lighten-2">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <a href="main.html" class="brand-logo center" style="color:black;">WifiPower</a>
+            </ul>
+            <a href="#" class="brand-img img-responsive">
+                <img src="images/WifiPower.png">
+            </a>  
+        </div>
+        </nav>
+    </div>
+
+    <div id="Content"class="carousel carousel-slider center" data-indicators="true">
+        <div class="carousel-fixed-item center">
+        </div>
+        <div class="carousel-item red white-text" href="#one!">
+            <div class="row"><div class="col l12 m12 s12"><h1 class="center">Our Technology</h1></div></div>
     <div class="row">
         <div class="col s4 m4">
         <div class="card">
@@ -70,7 +76,7 @@
             </div>
             <div class="card-content">
             <span class="card-title black-text">Security</span>
-                <p>Everything we do is designed to give you control over your information. 
+                <p style="color:black;">Everything we do is designed to give you control over your information. 
                 All the charging requests you send are encrypted. 
                 Charging data is stored on your device, never on our servers or in the "Cloud". 
                 WifiPower doesn’t share your credit card number. And the list goes on.
@@ -86,7 +92,7 @@
             </div>
             <div class="card-content">
                 <span class="card-title black-text">Fast Charging</span>
-                <p>The show must go on. 
+                <p style="color:black;">The show must go on. 
                 WifiPower employs a new wireless frequency to charge your phone, allowing you to watch up to 13 hours of video on a single charge. 
                 When you do need to power up, just set it down on with our page open. 
                 We use a P2P seeding network to ensure you get the optimum charge going to 50 percent in 30 minutes.
@@ -101,7 +107,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title black-text">Open Technologies</span>
-                    <p>WifiPower is updated to run the latest features — and even researches those that haven’t been invented yet. 
+                    <p style="color:black;">WifiPower is updated to run the latest features — and even researches those that haven’t been invented yet. 
                     So you can use our fast charging technology now. 
                     And take advantage of feature and security updates in the future.
                     Our code is available to all, as it should be because we practice the honest policies of the open web.
@@ -109,50 +115,48 @@
                 </div>
             </div>
         </div>
-    </div>  
-  </div>
-
-  <div id="red" class="block grey lighten-1">
-    <div class="row"><div class="col l12 m12 s12"><h1 class="center">The Team</h1></div></div>
-    <div class="row">
-            <div class="col s4 m4">
-            <div class="card">
-                <div class="card-image">
-                <img src="images/bill.JPG">
-                </div>
-                <div class="card-content">
-                <span class="card-title black-text">Mr. Bill</span>
-                <p>The most important member of the gang. A true pinnacle of innovation.</p>
-                </div>
-            </div>
-            </div>
-            <div class="col s4 m4">
-                <div class="card">
-                <div class="card-image">
-                    <img src="images/elk.JPG">
-                </div>
-                <div class="card-content">
-                    <span class="card-title black-text">Annoying Prick</span>
-                    <p>Dude wishes he was part of the gang. The sort to always follow in anothers footsteps.</p>
-                </div>
-                </div>
-            </div>
-            <div class="col s4 m4">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="images/bear.JPG">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title black-text">Oblivious Friend</span>
-                        <p>Sometimes un-bear-able but usually just a ball of fun. The jovial kind.</p>
-                    </div>
-                </div>
-            </div>
     </div>
-  </div>
-
-  <div id="green" class="block grey lighten-2">
-    <div class="row"><div class="col l12 m12 s12"><h1 class="center">Our Values</h1></div></div>
+        </div>
+        <div class="carousel-item amber white-text" href="#two!">
+            <div class="row"><div class="col l12 m12 s12"><h1 class="center">The Team</h1></div></div>
+            <div class="row">
+                    <div class="col s4 m4">
+                    <div class="card">
+                        <div class="card-image">
+                        <img src="images/bill.JPG">
+                        </div>
+                        <div class="card-content">
+                        <span class="card-title black-text">Mr. Bill</span>
+                        <p style="color:black;">The most important member of the gang. A true pinnacle of innovation.</p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col s4 m4">
+                        <div class="card">
+                        <div class="card-image">
+                            <img src="images/elk.JPG">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title black-text">Annoying Prick</span>
+                            <p style="color:black;">Dude wishes he was part of the gang. The sort to always follow in anothers footsteps.</p>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col s4 m4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/bear.JPG">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title black-text">Oblivious Friend</span>
+                                <p style="color:black;">Sometimes un-bear-able but usually just a ball of fun. The jovial kind.</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="carousel-item green white-text" href="#three!">
+            <div class="row"><div class="col l12 m12 s12"><h1 class="center">Our Values</h1></div></div>
     <div class="row">
             <div class="col s4 m4">
             <div class="card">
@@ -161,7 +165,7 @@
                 </div>
                 <div class="card-content">
                 <span class="card-title black-text">Honesty</span>
-                <p>We promise to always be honest and forthcoming to our users. Never mislead them, and be open about our promises. And that is why we must tell you, that this is totally 100% fake.</p>
+                <p style="color:black;">We promise to always be honest and forthcoming to our users. Never mislead them, and be open about our promises. And that is why we must tell you, that it's fake.</p>
                 </div>
             </div>
             </div>
@@ -172,7 +176,7 @@
                 </div>
                 <div class="card-content">
                     <span class="card-title black-text">Equality</span>
-                    <p>At WifiPower, we’re not all the same. And that’s our greatest asset. We draw on the differences in who we are, what we’ve experienced, and how we think.</p>
+                    <p style="color:black;">At WifiPower, we’re not all the same. And that’s our greatest asset. We draw on the differences in who we are, what we’ve experienced, and how we think.</p>
                 </div>
                 </div>
             </div>
@@ -183,7 +187,7 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title black-text">Customer Friendly</span>
-                        <p>Always delight your users.
+                        <p style="color:black;">Always delight your users.
                          Always do more than is required of you. 
                          Always give people more than they expect to get. 
                          Developers by birth, rebel by choice.
@@ -191,18 +195,8 @@
                     </div>
                 </div>
             </div>
-    </div>
   </div>
-
-  <script>
-  $(document).ready(function(){
-    $('.pushpin-demo-nav').each(function() {
-    var $this = $(this);
-    var $target = $('#' + $(this).attr('data-target'));
-    $this.pushpin({
-      top: $target.offset().top,
-      bottom: $target.offset().top + $target.outerHeight() - $this.height()
-    });
-  });
-  });
- </script>
+        </div>
+    </div>
+</body>
+</html>
