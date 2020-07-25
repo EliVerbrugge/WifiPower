@@ -1,25 +1,7 @@
-# Battery Status API
+# WifiPower
 
-> Battery Status API Demo
+The source code (if you can call it that) behind the [www.wifipower.net](https://wifipower.net/) website. 
 
-## Demo
-http://pazguille.github.io/demo-battery-api/
+Website built for fun off of the premise of supplementing POE (power over ethernet) with power over wifi aka. WifiPower.
 
-## Support
-- Chrome 38+
-- Chrome for Android
-- Firefox 31+
-
-## Specs
-http://www.w3.org/TR/battery-status
-
-## Maintained by
-- Guille Paz (Frontender & Web standards lover)
-- E-mail: [guille87paz@gmail.com](mailto:guille87paz@gmail.com)
-- Twitter: [@pazguille](http://twitter.com/pazguille)
-- Web: [http://pazguille.me](http://pazguille.me)
-
-## License
-Licensed under the MIT license.
-
-Copyright (c) 2014 [@pazguille](http://twitter.com/pazguille).
+Utilizes Materialize JS and some other scraped together pieces to build the website template, as well as the HTML5 battery status api to grab your current battery status. Uses the HERE maps api to estimate approximate location.
