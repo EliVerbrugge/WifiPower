@@ -1,6 +1,6 @@
 # WifiPower
 
-The source code (if you can call it that) behind the [www.wifipower.net](https://wifipower.net/) website. 
+The source code (if you can call it that) behind the [wifipower.net](https://wifipower.net/) website. Hosted on firebase.
 
 Website built for fun off of the premise of supplementing POE (power over ethernet) with power over wifi aka. WifiPower.
 
